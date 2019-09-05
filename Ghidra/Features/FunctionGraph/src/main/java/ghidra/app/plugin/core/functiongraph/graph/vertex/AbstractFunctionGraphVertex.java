@@ -134,7 +134,7 @@ public abstract class AbstractFunctionGraphVertex implements FGVertex {
 		return doGetComponent();
 	}
 
-	FGController getController() {
+	public FGController getController() {
 		return controller;
 	}
 
@@ -287,6 +287,11 @@ public abstract class AbstractFunctionGraphVertex implements FGVertex {
 	@Override
 	public Color getBackgroundColor() {
 		return doGetComponent().getBackgroundColor();
+	}
+
+	@Override
+	public Color getSelectionColor() {
+		return doGetComponent().getSelectionColor();
 	}
 
 	@Override

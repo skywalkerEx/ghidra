@@ -116,8 +116,6 @@ public:
 class Architecture : public AddrSpaceManager {
 public:
   string archid;		///< ID string uniquely describing this architecture
-  string description;	        ///< Description of architecture
-  string version;		///< Configuration version
 
 				// Configuration data
   int4 trim_recurse_max;	///< How many levels to let parameter trims recurse
@@ -177,6 +175,8 @@ public:
   void globalify(void);					///< Mark \e all spaces as global
   void restoreFlowOverride(const Element *el);		///< Set flow overrides from XML
   virtual ~Architecture(void);				///< Destructor
+
+  virtual string getDescription(void) const { return archid; }	///< Get a string describing \b this architecture
 
   /// \brief Print an error message to console
   ///
@@ -255,6 +255,7 @@ protected:
   void parseProtoEval(const Element *el);		///< Apply prototype evaluation configuration
   void parseDefaultProto(const Element *el);		///< Apply default prototype model configuration
   void parseGlobal(const Element *el);			///< Apply global space configuration
+  void addOtherSpace(void);                         ////add OTHER space and all of its overlays to the symboltab
   void parseReadOnly(const Element *el);		///< Apply read-only region configuration
   void parseVolatile(const Element *el);		///< Apply volatile region configuration
   void parseReturnAddress(const Element *el);		///< Apply return address configuration
